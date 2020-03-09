@@ -1,0 +1,9 @@
+https://youtu.be/9clnwaqOU2E
+BlogPost: https://www.byte-by-byte.com/strings/
+String Patterns
+1) Use 256 length integer array to track characters in a string. Can be used to detect if two strings are anagrams
+2) Use two pointers in a string (For example if you want to reverse a string)
+3) Know how to convert between characters and integers, take character and convert to ASCII value.
+4) String comparision and alignment and matching(Longest common substring), look into recursion blogpost
+5) String alg (focus on strategy/concepts of alg)
+6) Number 1 mistake people make with string problems is time complexity

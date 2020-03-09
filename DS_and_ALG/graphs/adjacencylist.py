@@ -119,29 +119,6 @@ class Graph:
 
 
 
-# def bfs(graph, start):
-#     vertexList, edgeList = graph
-#     visitedList = []
-#     queue = [start]
-#     adjacencyList = [[] for vertex in vertexList]
-#
-#     # fill adjacencyList from graph
-#     for edge in edgeList:
-#         adjacencyList[edge[0]].append(edge[1])
-#
-#     # bfs
-#     while queue:
-#         current = queue.pop()
-#         for neighbor in adjacencyList[current]:
-#             if not neighbor in visitedList:
-#                 queue.insert(0,neighbor)
-#         visitedList.append(current)
-#     return visitedList
-#
-
-
-
-
 
 
 if __name__ == "__main__":

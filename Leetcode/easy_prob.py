@@ -1,4 +1,35 @@
 
+
+def find_peak_element(a,iterative,recursive,linear):
+
+    if iterative == True:
+        print("Iterative approach")
+
+    elif recursive == True:
+        print("Recursive approach")
+
+        mid = int((len(a)-1)/2)
+
+        if a[mid] > a[mid+1]:
+            #search left side because peak is on the left side
+            find_peak_element(a[:mid+1], iterative=False, recursive=True, linear=False)
+        elif a[mid] < a[mid+1]:
+            #search right side because peak is on the right side
+            find_peak_element(a[mid+1:],iterative=False, recursive=True, linear=False)
+
+
+    elif linear == True:
+        print("linear approach")
+
+        for i in range(len(a)-1):
+            if a[i] > a[i+1]:
+                return a[i]
+
+        return (a[len(a)-1])
+
+    return
+
+
 def rotate_array():
     """
 
@@ -19,7 +50,6 @@ def rotate_array():
 
     return rms
 
-
 def buy_sell_stock():
     """
     https://www.youtube.com/watch?v=mj7N8pLCJ6w
@@ -31,8 +61,6 @@ def buy_sell_stock():
     stocks = [7,1,5,3,6,4]
     for i in range(0,len(stocks)):
         print (stocks[i])
-
-
 
 def remove_dup(arr):
     """
@@ -95,15 +123,29 @@ def merge(nums1, m, nums2, n) -> None:
 
 
 if __name__ == "__main__":
-    #rotate_array()
-    #buy_sell_stock()
-    #remove_dup(arr)
 
-    #nums1 = [1, 2, 3, 0, 0, 0]
-    nums1 = [0,0,0,0,0,0]
-    m = 1
-    #nums2 = [2, 5, 6]
-    nums2 = [1,2,3,4,5]
-    n = 1
+    a=[1,2,1,3,5,0]
+    a=[1,1,1]
+    a=[19,12,1]
+    print(find_peak_element(a,iterative=False,recursive=False,linear=True))
 
-    print(merge(nums1,m,nums2,n))
+
+
+
+
+
+
+
+
+    # #rotate_array()
+    # #buy_sell_stock()
+    # #remove_dup(arr)
+    #
+    # #nums1 = [1, 2, 3, 0, 0, 0]
+    # nums1 = [0,0,0,0,0,0]
+    # m = 1
+    # #nums2 = [2, 5, 6]
+    # nums2 = [1,2,3,4,5]
+    # n = 1
+    #
+    # print(merge(nums1,m,nums2,n))
