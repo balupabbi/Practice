@@ -12,10 +12,10 @@ class Node():
         self.right = None
 
 
-
 class BinaryTree():
     def __init__(self, root):
         self.root = Node(root)
+        self.max2 = []
 
     def print_tree(self, start, traversal_type):
 
@@ -181,6 +181,50 @@ class BinaryTree():
             return 0
         return 1+self.sizeoftree2(node.left)+self.sizeoftree2(node.right)
 
+    def _findsecondmax(self,node):
+        """
+        uses preorder traversal and keep track of two highest values and updates self.max2
+        :param node:
+        :return:
+        """
+
+        if node:
+            #logic to update self.max2
+            if len(self.max2)==2:
+                # compare min and current node.value
+                min_value = min(self.max2)
+                max_value = max(self.max2)
+
+                if node.value > min_value:
+                    if node.value != max_value:
+                        index = self.max2.index(min_value)
+                        self.max2.pop(index)
+                        self.max2.append(node.value)
+            else:
+                # size either 1 or 0, then u just append
+                if len(self.max2) == 1:
+                    if node.value != self.max2[0]:
+                        self.max2.append(node.value)
+                else:
+                    self.max2.append(node.value)
+
+
+            print(node.value)
+            self._findsecondmax(node.left)
+            self._findsecondmax(node.right)
+
+    def getMax2(self,start):
+        """
+        Uses helper function findsecondmax and returns second max from self.max2
+        :param start:
+        :return:
+        """
+        self._findsecondmax(start)
+        print(self.max2)
+        result = min(self.max2)
+        return result
+
+
 #     2
 #    /  \
 #   3    4
@@ -204,12 +248,15 @@ if __name__ == '__main__':
     tree.root.left.right = Node(8)
     tree.root.right.left = Node(5)
 
-    tree.print_tree(tree.root, 'preorder')
-    tree.print_tree(tree.root, 'inorder')
-    tree.print_tree(tree.root, 'postorder')
-    tree.print_tree(tree.root, 'levelorder')
-    tree.print_tree(tree.root, 'reverselevelorder')
 
-    print(tree.height(tree.root.left.left))
-    print(tree.sizeoftree(tree.root))
-    print(tree.sizeoftree2(tree.root))
+    print(tree.getMax2(tree.root))
+
+    # tree.print_tree(tree.root, 'preorder')
+    # tree.print_tree(tree.root, 'inorder')
+    # tree.print_tree(tree.root, 'postorder')
+    # tree.print_tree(tree.root, 'levelorder')
+    # tree.print_tree(tree.root, 'reverselevelorder')
+    #
+    # print(tree.height(tree.root.left.left))
+    # print(tree.sizeoftree(tree.root))
+    # print(tree.sizeoftree2(tree.root))
