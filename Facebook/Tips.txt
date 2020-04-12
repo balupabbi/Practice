@@ -1,0 +1,4 @@
+Reference: https://realpython.com/python-coding-interview-tips/
+
+1) Use enumerate instead of range
+2) Debug with breakpoint() instead of print()

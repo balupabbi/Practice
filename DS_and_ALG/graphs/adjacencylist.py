@@ -5,6 +5,9 @@
 #Simple BFS python implementation: https://www.youtube.com/watch?v=QkEOGoUar3g
 #Simple DFS python implementation: https://www.youtube.com/watch?v=0Zsabo7ires
 
+
+#Shortest path: https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/
+
 from collections import deque
 
 class Graph:
@@ -81,7 +84,6 @@ class Graph:
                         stack.append(neighbor)
             visited[current_node] = True
 
-
         if all(True for i in visited):
             print("Done with dfs")
 
@@ -106,12 +108,68 @@ class Graph:
             self.recursive_dfs(start,visited)
 
 
-
-
-
     def find_shortest_path(self, start, end):
 
+        """
+        Use BFS to find the shortest path
+        - use level ={} to keep track of distance of each node
+        - use parent = {} to back track and trace it out
+
+        https://medium.com/@yasufumy/algorithm-breadth-first-search-408297a075c9
+        :param start:
+        :param end:
+        :return:
+        """
+
+        if start==None:
+            return
+
+        visited = {}
+
+        distance = {start:0}
+        parent = {start:None}
+
+        queue = deque()
+        queue.append(start)
+
+        while queue:
+
+            cn = queue.popleft()
+
+            for n in self.adjacencylist[cn]:
+                if n not in visited:
+                    queue.append(n)
+                    parent[n] = cn
+                    if n not in distance:
+                        distance[n] = 1
+                    else:
+                        distance[n] += 1
+
+            visited[cn] = True
+
+        if all(visited.values()) == True:
+            print('BFS done')
+
         print("Finding shortest path")
+
+        path = []
+        cn = end
+        path.append(cn)
+
+        while cn != start:
+            cn = parent[cn]
+            path.append(cn)
+
+        print (path[::-1])
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,6 +194,7 @@ if __name__ == "__main__":
     graph.add_edge(3,4)
     graph.add_edge(2,3)
     graph.add_edge(1,2)
-    print (graph.adjacencylist)
+    #print (graph.adjacencylist)
 
-    graph.recursive_dfs(0)
+    #graph.recursive_dfs(0)
+    graph.find_shortest_path(0,3)
