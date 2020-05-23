@@ -53,6 +53,7 @@ def twoSum2(a, target):
             return [i1,i2]
 
 
+
 def two_sum(self, nums, target):
     compliments = {}
     result = []
@@ -62,6 +63,7 @@ def two_sum(self, nums, target):
       else:
         result = [compliments[num], index]
     return result
+
 
 
 if __name__ == '__main__':

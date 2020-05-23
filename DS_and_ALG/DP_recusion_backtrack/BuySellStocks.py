@@ -73,6 +73,15 @@ def buysell2(prices):
 
     return mp
 
+def buysell_faster(prices):
+    profit = 0
+    prev = prices[0]
+    for curr in prices[1:]:
+        if curr > prev:
+            profit += curr - prev
+        prev = curr
+    return profit
+
 
 
 if __name__ == "__main__":

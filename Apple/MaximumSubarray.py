@@ -14,6 +14,9 @@ https://www.youtube.com/watch?v=86CQq3pKSUw
 """
 import sys
 
+
+
+
 def findProd(a):
     prod = 1
     if not a:
@@ -131,7 +134,7 @@ if __name__ == "__main__":
     a = [0,45,-1,65,-2,-90,-47]
     a= [0,0,14,56,6]
     a= [1,-3,2,1,-1]
-    a=[-2,3,2,-1]
+    a=[-2,3,2,-1,-1,-98]
 
 
     print(maxSubSum3(a))
