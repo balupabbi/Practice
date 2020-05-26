@@ -88,7 +88,7 @@ if __name__ == '__main__':
     nums1 = [1, 4, 5, 3, 6]
     nums2 = [2, 3, 5, 7, 9]
 
-    nums1 = [4, 9, 5]
+    nums1 = [4, 9, 5, 9]
     nums2 = [9, 4, 9, 8, 4]
 
     print(intersect4(nums1,nums2))
